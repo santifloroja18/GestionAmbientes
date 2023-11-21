@@ -1,0 +1,21 @@
+td{
+    margin:  10vh;
+    border: 2vh black ;
+    border-radius: 3vh;
+    background-color: #000000;
+}
+
+th{
+    margin:  10vh;
+    border: 2vh black ;
+    border-radius: 3vh;
+    
+}
+
+hr{
+    width: 1px
+}
+
+tr{
+    margin-top: 10vh;
+}

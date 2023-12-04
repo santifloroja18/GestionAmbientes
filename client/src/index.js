@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import PrestamoAmbientes from './pages/PrestamoAmbientes';
 import GestionAmbientes from './pages/GestionAmbientes';
 import RecuperarContrasena from './pages/RecuperarContraseña';
+import Auditorio from './pages/Auditorio';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,11 @@ const router = createBrowserRouter([
   {
     path: '/recuperarContraseña',
     element: <RecuperarContrasena/>,
+    errorElement: <div>ERROR 404!!</div>
+  },
+  {
+    path: '/Auditorio',
+    element: <Auditorio/>,
     errorElement: <div>ERROR 404!!</div>
   }
 ])

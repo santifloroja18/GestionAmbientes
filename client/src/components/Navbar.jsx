@@ -14,20 +14,23 @@ export default function NavBar(){
                 <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                    <Link to={'/prestamoAmbientes'} className="text-decoration-none">
-                        <a className="nav-link" >Prestamo de Ambientes</a>
+                    <Link to={'*'} className="text-decoration-none">
+                        <a className="nav-link" >Inducciones</a>
                     </Link>
                     </li>
 
                     <li className="nav-item">
-                    <Link to={'/gestionAmbientes'} className="text-decoration-none">
-                        <a className="nav-link" >Gestión de Ambientes</a>
+                    <Link to={'*'} className="text-decoration-none">
+                        <a className="nav-link" >Eventos</a>
                     </Link>
                     </li>
 
-                    <li className="nav-item d-flex float-end">
-                    <a className="nav-link active " aria-current="page">Richard Alexander Betancur</a>
+                    <li className="nav-item">
+                    <Link to={'*'} className="text-decoration-none">
+                        <a className="nav-link" >Ceremonias de Graduación</a>
+                    </Link>
                     </li>
+
                 </ul>
                 </div>
             </div>

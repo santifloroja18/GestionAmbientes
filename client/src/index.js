@@ -11,6 +11,10 @@ import PrestamoAmbientes from './pages/PrestamoAmbientes';
 import GestionAmbientes from './pages/GestionAmbientes';
 import EstadoAmbientes from './pages/EstadoAmbientes';
 import RecuperarContrasena from './pages/RecuperarContraseña';
+import Auditorio from './pages/Auditorio';
+import Ambientes from './pages/Ambientes';
+import CrearAmbiente from './pages/CrearAmbiente';
+import EditarAmbiente from './pages/EditarAmbiente';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +50,26 @@ const router = createBrowserRouter([
   {
     path: '/recuperarContraseña',
     element: <RecuperarContrasena/>,
+    errorElement: <div>ERROR 404!!</div>
+  },
+  {
+    path: '/auditorio',
+    element: <Auditorio/>,
+    errorElement: <div>ERROR 404!!</div>
+  },
+  {
+    path: '/Ambientes',
+    element: <Ambientes/>,
+    errorElement: <div>ERROR 404!!</div>
+  },
+  {
+    path: '/crearAmbientes',
+    element: <CrearAmbiente/>,
+    errorElement: <div>ERROR 404!!</div>
+  },
+  {
+    path: '/editarAmbiente/:id',
+    element: <EditarAmbiente/>,
     errorElement: <div>ERROR 404!!</div>
   }
 ])

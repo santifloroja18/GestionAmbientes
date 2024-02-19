@@ -28,7 +28,8 @@ export default function SideBar(){
             <MenuItem component={<Link to="/prestamoAmbientes" />}>Préstamo de Ambientes</MenuItem>
             <MenuItem component={<Link to="/gestionAmbientes" />}>Gestión de Ambientes</MenuItem>
             <MenuItem component={<Link to="/estadoAmbientes" />}>Estado de Ambientes</MenuItem>
-            <MenuItem component={<Link to="/estadoAmbientes" />}>Historial Ambientes Prestados</MenuItem>
+            <MenuItem component={<Link to="/ambientes" />}>Ambientes</MenuItem>
+
           </Menu>
           <Link className="text-decoration-none text-white" to={'/estadoAmbientes'}>
             <h3><CiUser />Perfil </h3>

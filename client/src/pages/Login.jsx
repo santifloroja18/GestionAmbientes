@@ -1,7 +1,37 @@
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import axios from 'axios';
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 
 export default function Login() {
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState({
+    email: '',
+    password: ''
+  });
+
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://localhost:8000/api/login', userData)
+      console.log(response.data)
+      // var error = response.data.map(message)
+      navigate('/ambientes')
+    } catch (error) {
+      console.error('Error al ingresar usuario:', error);
+      setErrorMessage('Error al ingresar usuario: ' + error.response.data.message);
+    }
+  }
+
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setUserData((prevData) => ({
+        ...prevData,
+        [id]: value,
+    }));
+};
+
   return (
     <div id="Login">
       <div className="row cuadradolog my-5">
@@ -35,6 +65,8 @@ export default function Login() {
                         className="form-control"
                         type="email"
                         placeholder="Ingrese correo"
+                        value={userData.email}
+                        onChange={handleInputChange}
                       />
                     </div>
                     <div id="camposFormulario" className="mb-3">
@@ -47,6 +79,8 @@ export default function Login() {
                         name=""
                         id="password"
                         placeholder="Ingrese contraseña"
+                        value={userData.password}
+                        onChange={handleInputChange}
                       />
                     </div>
                   </div>
@@ -61,20 +95,25 @@ export default function Login() {
                       >
                         Registrarse
                       </button>
-                    </Link>{" "}
+                    </Link>
                   </div>
                   <div className="col-2"></div>
                   <div className="col-4">
-                    <Link to={"/home"}>
-                      <button className="btn btn-dark fw-bold" type="button">
+                      <button className="btn btn-dark fw-bold" type="button" onClick={handleLogin}>
                         Iniciar Sesión
                       </button>
-                    </Link>{" "}
                   </div>
                 </div>
               </form>
             </div>
           </div>
+          {errorMessage && (
+            <div className="col-8">
+              <div className="alert alert-danger" role="alert">
+                {errorMessage}
+              </div>
+            </div>
+          )}
           <Link id="ruta" to={"/recuperarContraseña"}>
             <h5 className="mt-5 text-center fw-bold text-dark">
               ¿Olvidaste tu contraseña?

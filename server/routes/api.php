@@ -17,7 +17,7 @@ Route::get('/room/{id}', [AmbienteController::class, 'show'])->name('show');
 Route::put('/room-update/{id}', [AmbienteController::class, 'update'])->name('update');
 Route::delete('/room-delete/{id}', [AmbienteController::class, 'destroy'])->name('destroy');
 //Client should be authenticated to access for functions
-
+Route::get('/room-stock/{id}', [StockRoomController::class, 'show'])->name('room-stock');
 Route::middleware('auth:sanctum')->group(function (){
     
     // Route::get('/user', function (Request $request)
@@ -42,6 +42,6 @@ Route::middleware('auth:sanctum')->group(function (){
     //--LIST ROOM STOCKS
     Route::get('/room-stocks', [StockRoomController::class, 'index'])->name('room-stocks');
     //--UPDATE ROOM STOCK BY ID
-    Route::get('/room-stock/{id}', [StockRoomController::class, 'show'])->name('room-stock');
+    Route::put('/room-stock/{id}', [StockRoomController::class, 'update'])->name('edit-stock');
 });
 

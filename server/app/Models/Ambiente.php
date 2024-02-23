@@ -29,4 +29,9 @@ class Ambiente extends Model
     {
         return $this->hasOne(RoomStock::class, 'ambiente_id', 'id');
     }
+
+    public function elements(): BelongsToMany
+    {
+        return $this->belongsToMany(Elemento::class, 'ambiente_element', 'ambiente_id', 'element_id')->withPivot('quantity');
+    }
 }

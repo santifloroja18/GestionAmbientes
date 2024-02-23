@@ -23,7 +23,7 @@ class AmbienteController extends Controller
         // -- INNER JOIN `room_stocks` AS `d` ON `b`.`id`=`d`.`id_room`')
         
         $ambiente=Ambiente::all();
-        return response()->json($ambiente);
+        return response()->json([$ambiente]);
     
     
     }
@@ -50,8 +50,9 @@ class AmbienteController extends Controller
      * Display the specified resource.
      */
     public function show($id)
-    {
+    {   
         $room=Ambiente::find($id);
+        //    $room=DB::select("SELECT `c`.`room_number`, `c`.`level_floor`, `c`.`state`, `b`.`program_name`, `e`.`name_element`, `d`.`quantity` FROM `room_program` AS `a` INNER JOIN `programs` as `b` ON `a`.`program_id`=`b`.`id` INNER JOIN `ambientes` AS `c` ON `a`.`ambiente_id`=`c`.`id` INNER JOIN `ambiente_element` AS `d` ON `c`.`id`=`d`.`ambiente_id`INNER JOIN `elementos` AS `e` ON `d`.`element_id`=`e`.`id` WHERE `a`.`ambiente_id`=$id;" );
         return new RoomResource($room);
     }
 

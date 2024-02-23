@@ -40,6 +40,7 @@ export default function Registro(){
         } catch (error) {
             console.error('Error al registrar usuario:', error);
             setErrorMessage('Error al registrar usuario: ' + JSON.stringify(error.response.data.message));
+
         }
     };
 
@@ -52,7 +53,17 @@ export default function Registro(){
                 </div>
                 <div id='form' className='col-7' >
                     
-
+                <div className="row justify-content-center">
+                      {errorMessage && (
+                          <div className="col-8">
+                              <div className="alert alert-danger" role="alert">
+                                 
+                                 {errorMessage}
+                                
+                              </div>
+                          </div>
+                      )}
+                  </div>
                     <div className='row justify-content-center' >
                         <div className='col-8'><h4 id='tituloRegistro' className='text-center'>Crear una cuenta</h4></div>
                     </div>
@@ -156,15 +167,7 @@ export default function Registro(){
                                     <div className='col-1'></div>
                                     <img className='col-3 img-fluid rounded float-end' src="../../../images/logopequeño.png" alt="logoSena" />
                                 </div>
-                                <div className="row justify-content-center">
-                                    {errorMessage && (
-                                        <div className="col-8">
-                                            <div className="alert alert-danger" role="alert">
-                                                {errorMessage}
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
+                              
                                 
                             </form>
                         </div>

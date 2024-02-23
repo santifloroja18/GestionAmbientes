@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Program;
 use Illuminate\Database\Seeder;
+use Termwind\Components\Element;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,6 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
        $this->call([
+            ElementSeeder::class,
             RoomstockSeeder::class,
             UserSeeder::class,
             ProgramSeeder::class,

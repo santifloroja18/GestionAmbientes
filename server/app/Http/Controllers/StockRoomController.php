@@ -6,6 +6,7 @@ use App\Http\Requests\StockRequest;
 use App\Http\Resources\StockRoomResource;
 use App\Models\RoomStock;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StockRoomController extends Controller
 {
@@ -57,11 +58,15 @@ class StockRoomController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         $roomstock = RoomStock::find($id);
-
         return new StockRoomResource($roomstock);
+        // $roomstock = DB::select("SELECT *FROM `room_stocks` where 'ambiente_id'=$id");
+       
+        // return response()->json([
+        //     $roomstock
+        // ]);
     }
 
     /**
@@ -75,9 +80,24 @@ class StockRoomController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StockRequest $request, $id)
     {
-        //
+        $stock=RoomStock::find($id);
+        $stock->chair_quantity = $request->chair_quantity;
+        $stock->desck_quantity = $request->desck_quantity;
+        $stock->table_quantity = $request->table_quantity;
+        $stock->tvScream_quantity = $request->tvScream_quantity;
+        $stock->air_condition = $request->air_condition;
+        $stock->laptop_quantity = $request->laptop_quantity;
+        $stock->desckComputer_quantity = $request->desckComputer_quantity;
+        $stock->videoBeam = $request->videoBeam;
+        $stock->save();
+        
+        return response()->json([
+            'status' => true,
+            'Message' => 'Room modified successfully',
+            $stock
+        ], 200)->send('Room modified successfully');
     }
 
     /**
